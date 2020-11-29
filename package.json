@@ -1,6 +1,6 @@
 {
   "name": "react-404-pages",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "A library of re-usable 404 pages.",
   "keywords": [],
   "main": "dist/react-404-pages.umd.js",
@@ -19,32 +19,24 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "start:dev": "yarn storybook",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
-    "test:prod": "npm run lint && npm run test -- --no-cache",
-    "deploy-docs": "ts-node tools/gh-pages-publish",
+    "test:prod": "yarn lint && yarn test -- --no-cache",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "commit": "git-cz",
-    "semantic-release": "semantic-release",
-    "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
-    "travis-deploy-once": "travis-deploy-once",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepush": "yarn test:prod && yarn build",
+    "prepublishOnly": "yarn build"
   },
   "lint-staged": {
     "{src,test}/**/*.{ts,tsx}": [
       "prettier --write",
       "git add"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
   },
   "jest": {
     "transform": {
@@ -79,11 +71,6 @@
   },
   "prettier": {
     "singleQuote": true
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -129,7 +116,7 @@
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-typescript2": "^0.29.0",
-    "semantic-release": "^15.9.16",
+    "semantic-release": "^17.3.0",
     "shelljs": "^0.8.3",
     "travis-deploy-once": "^5.0.9",
     "ts-jest": "^26.4.4",

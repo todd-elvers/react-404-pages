@@ -12,7 +12,7 @@
   "author": "Todd Elvers <todd.elvers@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/todd-elvers/react-404-pages"
   },
   "license": "MIT",
   "engines": {

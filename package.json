@@ -2,10 +2,13 @@
   "name": "react-404-pages",
   "version": "0.0.0-development",
   "description": "A library of re-usable 404 pages.",
-  "keywords": [],
+  "keywords": [
+    "react",
+    "404"
+  ],
   "main": "dist/react-404-pages.umd.js",
   "module": "dist/react-404-pages.es5.js",
-  "typings": "dist/types/react-404-pages.d.ts",
+  "typings": "dist/lib/index.d.ts",
   "files": [
     "dist"
   ],

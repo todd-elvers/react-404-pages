@@ -1,20 +1,15 @@
-import * as TestRenderer from 'react-test-renderer';
-import React from 'react';
-import { LostInSpace } from './LostInSpace';
+import * as TestRenderer from "react-test-renderer";
+import React from "react";
+import { LostInSpace } from "./LostInSpace";
 
-describe('404 - Lost In Space', () => {
-  it('renders as expected', () => {
+describe("404 - Lost In Space", () => {
+  it("renders as expected", () => {
     const page = TestRenderer.create(<LostInSpace />);
 
     expect(page).toMatchInlineSnapshot(`
       <div
         className="moon__container"
-        style={
-          Object {
-            "height": "100vh",
-            "width": "100wh",
-          }
-        }
+        style={Object {}}
       >
         <div
           className="moon__space"

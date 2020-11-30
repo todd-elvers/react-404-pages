@@ -1,16 +1,18 @@
 /* istanbul ignore file */
 
-import * as React from 'react';
+import * as React from "react";
+import clsx from "clsx";
 
-import './LostInSpace.css';
+import "./LostInSpace.css";
 
 type Props = {
-  readonly height?: React.CSSProperties['height'];
-  readonly width?: React.CSSProperties['width'];
+  readonly className?: string;
+  readonly height?: React.CSSProperties["height"];
+  readonly width?: React.CSSProperties["width"];
 };
 
 function drawAstronautVisor(visorRef: React.RefObject<HTMLCanvasElement>) {
-  const ctx = visorRef.current?.getContext('2d');
+  const ctx = visorRef.current?.getContext("2d");
   if (!ctx) return;
 
   ctx.beginPath();
@@ -25,16 +27,13 @@ function drawAstronautVisor(visorRef: React.RefObject<HTMLCanvasElement>) {
   ctx.bezierCurveTo(15, 10, 5, 10, 5, 20);
   ctx.lineTo(5, 45);
 
-  ctx.fillStyle = '#2f3640';
-  ctx.strokeStyle = '#f5f6fa';
+  ctx.fillStyle = "#2f3640";
+  ctx.strokeStyle = "#f5f6fa";
   ctx.fill();
   ctx.stroke();
 }
 
-export const LostInSpace: React.FC<Props> = ({
-  height = '100vh',
-  width = '100wh'
-}) => {
+export const LostInSpace: React.FC<Props> = ({ height, width, className }) => {
   const cordRef = React.createRef<HTMLCanvasElement>();
   const visorRef = React.createRef<HTMLCanvasElement>();
 
@@ -47,7 +46,7 @@ export const LostInSpace: React.FC<Props> = ({
   let y3Forward = true;
 
   const animate = () => {
-    const ctx = cordRef.current?.getContext('2d');
+    const ctx = cordRef.current?.getContext("2d");
     if (!ctx) return;
 
     requestAnimationFrame(animate);
@@ -57,7 +56,7 @@ export const LostInSpace: React.FC<Props> = ({
     ctx.moveTo(130, 170);
     ctx.bezierCurveTo(250, y1, 345, y2, 400, y3);
 
-    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = "white";
     ctx.lineWidth = 8;
     ctx.stroke();
 
@@ -78,8 +77,13 @@ export const LostInSpace: React.FC<Props> = ({
     animate();
   }, [visorRef, cordRef]);
 
+  const combinedClasses = clsx("moon__container", !!className && className);
+
+  const style =
+    height !== undefined && width !== undefined ? { height, width } : {};
+
   return (
-    <div className="moon__container" style={{ height, width }}>
+    <div className={combinedClasses} style={style}>
       <div className="moon__space">
         <div className="moon" />
         <div className="moon__crater moon__crater1" />

@@ -1,5 +1,3 @@
-/* istanbul ignore file */
-
 import * as React from 'react';
 
 import './LostInSpace.css';
@@ -10,7 +8,7 @@ type Props = {
 };
 
 /* istanbul ignore next */
-const useAstronautCord = () => {
+function useAstronautCord() {
   const cordRef = React.createRef<HTMLCanvasElement>();
   let y1 = 160;
   let y2 = 100;
@@ -52,10 +50,10 @@ const useAstronautCord = () => {
   }, [cordRef?.current]);
 
   return cordRef;
-};
+}
 
 /* istanbul ignore next */
-const useAstronautVisor = () => {
+function useAstronautVisor() {
   const visorRef = React.createRef<HTMLCanvasElement>();
 
   React.useEffect(() => {
@@ -81,7 +79,7 @@ const useAstronautVisor = () => {
   }, [visorRef]);
 
   return visorRef;
-};
+}
 
 export const LostInSpace = ({ height = '100vh', width = '100wh' }: Props) => {
   const visorRef = useAstronautVisor();

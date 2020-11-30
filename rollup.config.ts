@@ -4,7 +4,6 @@ import typescript from "rollup-plugin-typescript2";
 import json from "@rollup/plugin-json";
 import postcss from "rollup-plugin-postcss";
 import pkg from "./package.json";
-import externalGlobals from "rollup-plugin-external-globals";
 
 const input = "src/index.tsx";
 
@@ -25,13 +24,6 @@ const plugins = [
     typescript: require("typescript")
   }),
 
-  // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
-  // commonjs(),
-
-  externalGlobals({
-    react: "React",
-    "react-dom": "ReactDOM"
-  }),
   // Allow node_modules resolution, so you can use 'external' to control
   // which external modules to include in the bundle
   // https://github.com/rollup/rollup-plugin-node-resolve#usage

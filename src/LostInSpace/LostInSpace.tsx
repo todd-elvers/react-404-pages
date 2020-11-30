@@ -31,7 +31,10 @@ function drawAstronautVisor(visorRef: React.RefObject<HTMLCanvasElement>) {
   ctx.stroke();
 }
 
-export const LostInSpace = ({ height = '100vh', width = '100wh' }: Props) => {
+export const LostInSpace: React.FC<Props> = ({
+  height = '100vh',
+  width = '100wh'
+}) => {
   const cordRef = React.createRef<HTMLCanvasElement>();
   const visorRef = React.createRef<HTMLCanvasElement>();
 

@@ -27,7 +27,7 @@
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
     "build": "yarn build:clean && yarn build:ts",
     "build:ts": "tsc -p . && rollup -c",
-    "build:clean": "rimraf dist",
+    "build:clean": "rimraf dist && find ./src \\( -name \"*.js\" -o -name \"*.js.map\" -o -name \"*.d.ts\" \\) -delete",
     "start:dev": "yarn storybook",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",

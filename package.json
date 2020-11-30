@@ -32,7 +32,6 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepush": "yarn test:prod && yarn build",
     "prepublishOnly": "yarn build"
   },
   "lint-staged": {
@@ -134,6 +133,7 @@
   "dependencies": {},
   "husky": {
     "hooks": {
+      "pre-push": "yarn test:prod && yarn build",
       "pre-commit": "lint-staged"
     }
   }

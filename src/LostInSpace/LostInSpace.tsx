@@ -8,8 +8,32 @@ type Props = {
 };
 
 /* istanbul ignore next */
-function useAstronautCord() {
+function drawAstronautVisor(visorRef: React.RefObject<HTMLCanvasElement>) {
+  const ctx = visorRef.current?.getContext('2d');
+  if (!ctx) return;
+
+  ctx.beginPath();
+  ctx.moveTo(5, 45);
+  ctx.bezierCurveTo(15, 64, 45, 64, 55, 45);
+
+  ctx.lineTo(55, 20);
+  ctx.bezierCurveTo(55, 15, 50, 10, 45, 10);
+
+  ctx.lineTo(15, 10);
+
+  ctx.bezierCurveTo(15, 10, 5, 10, 5, 20);
+  ctx.lineTo(5, 45);
+
+  ctx.fillStyle = '#2f3640';
+  ctx.strokeStyle = '#f5f6fa';
+  ctx.fill();
+  ctx.stroke();
+}
+
+export const LostInSpace = ({ height = '100vh', width = '100wh' }: Props) => {
   const cordRef = React.createRef<HTMLCanvasElement>();
+  const visorRef = React.createRef<HTMLCanvasElement>();
+
   let y1 = 160;
   let y2 = 100;
   let y3 = 100;
@@ -46,44 +70,9 @@ function useAstronautCord() {
   };
 
   React.useEffect(() => {
+    drawAstronautVisor(visorRef);
     animate();
-  }, [cordRef?.current]);
-
-  return cordRef;
-}
-
-/* istanbul ignore next */
-function useAstronautVisor() {
-  const visorRef = React.createRef<HTMLCanvasElement>();
-
-  React.useEffect(() => {
-    const ctx = visorRef.current?.getContext('2d');
-    if (!ctx) return;
-
-    ctx.beginPath();
-    ctx.moveTo(5, 45);
-    ctx.bezierCurveTo(15, 64, 45, 64, 55, 45);
-
-    ctx.lineTo(55, 20);
-    ctx.bezierCurveTo(55, 15, 50, 10, 45, 10);
-
-    ctx.lineTo(15, 10);
-
-    ctx.bezierCurveTo(15, 10, 5, 10, 5, 20);
-    ctx.lineTo(5, 45);
-
-    ctx.fillStyle = '#2f3640';
-    ctx.strokeStyle = '#f5f6fa';
-    ctx.fill();
-    ctx.stroke();
-  }, [visorRef]);
-
-  return visorRef;
-}
-
-export const LostInSpace = ({ height = '100vh', width = '100wh' }: Props) => {
-  const visorRef = useAstronautVisor();
-  const cordRef = useAstronautCord();
+  }, [visorRef, cordRef]);
 
   return (
     <div className="moon__container" style={{ height, width }}>

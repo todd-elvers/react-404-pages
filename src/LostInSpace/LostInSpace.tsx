@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import * as React from 'react';
 
 import './LostInSpace.css';
@@ -7,7 +9,6 @@ type Props = {
   readonly width?: React.CSSProperties['width'];
 };
 
-/* istanbul ignore next */
 function drawAstronautVisor(visorRef: React.RefObject<HTMLCanvasElement>) {
   const ctx = visorRef.current?.getContext('2d');
   if (!ctx) return;

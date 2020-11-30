@@ -3,7 +3,7 @@
     "moduleResolution": "node",
     "target": "es5",
     "lib": ["dom", "esnext"],
-    "module": "esnext",
+    "module": "es2015",
     "strict": true,
     "sourceMap": true,
     "declaration": true,
@@ -11,12 +11,11 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "outDir": "dist/lib",
     "typeRoots": ["node_modules/@types"],
-    "incremental": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "jsx": "react"
   },
   "exclude": ["node_modules", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
-  "include": ["src"]
+  "include": ["src/**/*"]
 }

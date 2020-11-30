@@ -11,3 +11,6 @@ compiled
 .rpt2_cache
 docs
 *.iml
+/src/**/*.js
+/src/**/*.js.map
+/src/**/*.d.ts

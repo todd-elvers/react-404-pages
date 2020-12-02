@@ -9,6 +9,13 @@ type Props = {
   readonly className?: string;
   readonly height?: React.CSSProperties["height"];
   readonly width?: React.CSSProperties["width"];
+
+  readonly pageHeader?: string;
+  readonly messageHeader?: string;
+  readonly message?: string;
+  readonly buttonComponent?: React.ComponentType<{
+    readonly className: string;
+  }>;
 };
 
 function drawAstronautVisor(visorRef: React.RefObject<HTMLCanvasElement>) {
@@ -33,7 +40,15 @@ function drawAstronautVisor(visorRef: React.RefObject<HTMLCanvasElement>) {
   ctx.stroke();
 }
 
-export const LostInSpace: React.FC<Props> = ({ height, width, className }) => {
+export const LostInSpace: React.FC<Props> = ({
+  height,
+  width,
+  className,
+  pageHeader = "404",
+  messageHeader = "Hm...",
+  message = "It looks like this page does not exist!",
+  buttonComponent: ButtonComponent,
+}) => {
   const cordRef = React.createRef<HTMLCanvasElement>();
   const visorRef = React.createRef<HTMLCanvasElement>();
 
@@ -80,7 +95,7 @@ export const LostInSpace: React.FC<Props> = ({ height, width, className }) => {
   const combinedClasses = clsx("moon__container", !!className && className);
 
   const style =
-    height !== undefined && width !== undefined ? { height, width } : {};
+    height !== undefined && width !== undefined ? { height, width } : undefined;
 
   return (
     <div className={combinedClasses} style={style}>
@@ -97,13 +112,12 @@ export const LostInSpace: React.FC<Props> = ({ height, width, className }) => {
         <div className="star star5" />
 
         <div className="error">
-          <div className="error__title">404</div>
-          <div className="error__subtitle">Hmmm...</div>
-          <div className="error__description">
-            It looks like this page does not exist!
-          </div>
-          <button className="error__button error__button--active">LOGIN</button>
-          <button className="error__button">CONTACT</button>
+          <div className="error__page-header">{pageHeader}</div>
+          <div className="error__message-header">{messageHeader}</div>
+          <div className="error__message">{message}</div>
+          {ButtonComponent ? (
+            <ButtonComponent className="error__button error__button--active" />
+          ) : null}
         </div>
 
         <div className="astronaut">

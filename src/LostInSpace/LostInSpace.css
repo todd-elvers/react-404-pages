@@ -96,13 +96,13 @@
   transform: translateY(-60%);
   color: #363e49;
 }
-.moon__container .moon__space .error__title {
+.moon__container .moon__space .error__page-header {
   font-size: 10em;
 }
-.moon__container .moon__space .error__subtitle {
+.moon__container .moon__space .error__message-header {
   font-size: 2em;
 }
-.moon__container .moon__space .error__description {
+.moon__container .moon__space .error__message {
   opacity: 0.5;
 }
 .moon__container .moon__space .error__button {

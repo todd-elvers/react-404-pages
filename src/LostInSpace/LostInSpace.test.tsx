@@ -9,7 +9,6 @@ describe("404 - Lost In Space", () => {
     expect(page).toMatchInlineSnapshot(`
       <div
         className="moon__container"
-        style={Object {}}
       >
         <div
           className="moon__space"
@@ -45,30 +44,20 @@ describe("404 - Lost In Space", () => {
             className="error"
           >
             <div
-              className="error__title"
+              className="error__page-header"
             >
               404
             </div>
             <div
-              className="error__subtitle"
+              className="error__message-header"
             >
-              Hmmm...
+              Hm...
             </div>
             <div
-              className="error__description"
+              className="error__message"
             >
               It looks like this page does not exist!
             </div>
-            <button
-              className="error__button error__button--active"
-            >
-              LOGIN
-            </button>
-            <button
-              className="error__button"
-            >
-              CONTACT
-            </button>
           </div>
           <div
             className="astronaut"

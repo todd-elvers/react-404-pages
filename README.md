@@ -1,3 +1,3 @@
 # react-404-pages
 
-TODO: Add documentation
+Just messing around, this will not likely ever become a real library.
